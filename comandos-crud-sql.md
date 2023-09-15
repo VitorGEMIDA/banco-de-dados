@@ -61,9 +61,29 @@ VALUES('Ipad mini',
 
 ```
 
-<!-- ------------------- ->
+
 
 ## Insert
 ## Produtos
 
 ```sql
+
+INSERT INTO fabricantes (nome)
+VALUES('Positivo'),('Microsoft');
+
+```
+
+<!-- _____________________________________________________ -->
+
+## Insert
+## Fabricantes
+
+```sql
+
+INSERT INTO produtos (nome, descricao, preco, quantidade, fabricante_id)
+VALUES('Xbox', 'Console de ultima geração', 2500.99, 6, 8 );
+
+INSERT INTO produtos (nome, descricao, preco, quantidade, fabricante_id)
+VALUES('Ultrabook', 'AMD Ryzer 5 16Gb RAM', 4500.97, 12, 7 );
+
+```
