@@ -207,7 +207,9 @@ INSERT INTO alunos (nome, data_de_nascimento,primeira_nota, segunda_nota, curso_
 ```sql
 
 -- 5ª Digitação (SQL para criar a consulta acima)
-
+SELECT nome, data_de_nascimento 
+FROM alunos
+WHERE data_de_nascimento <   '2009-01-01' ;
 ```
 ![Relatório 1](resultados_alunos/relatorio1.jpg)
 
@@ -244,8 +246,10 @@ SELECT nome, area_de_atuacao FROM professores WHERE area_de_atuacao LIKE "%desen
 ### 5) Faça uma consulta que mostre a quantidade de professores por área de desenvolvimento.
 ```sql
 
--- 9ª Digitação (SQL para criar a consulta acima)
 
+SELECT COUNT(area_de_atuacao) AS "Quantidade de professores"
+FROM professores 
+WHERE area_de_atuacao LIKE "%desenvolvimento%";
 ```
 ![Relatório 5](resultados_alunos/relatorio5.jpg)
 
@@ -254,7 +258,9 @@ SELECT nome, area_de_atuacao FROM professores WHERE area_de_atuacao LIKE "%desen
 ### 6) Faça uma consulta que mostre o nome dos alunos, o título e a carga horária dos cursos que fazem.
 ```sql
 
-SELECT alunos.nome, cursos.titulo, cursos.carga_horaria FROM alunos INNER JOIN cursos ON alunos.curso_id = cursos.id;
+SELECT alunos.nome, cursos.titulo, cursos.carga_horaria 
+FROM alunos INNER JOIN cursos 
+ON alunos.curso_id = cursos.id;
 
 ```
 ![Relatório 6](resultados_alunos/relatorio6.jpg)
@@ -263,7 +269,10 @@ SELECT alunos.nome, cursos.titulo, cursos.carga_horaria FROM alunos INNER JOIN c
 ### 7) Faça uma consulta que mostre o nome dos professores e o título do curso que lecionam. Classifique pelo nome do professor.
 ```sql
 
--- 11ª Digitação (SQL para criar a consulta acima)
+
+SELECT professores.nome, cursos.titulo
+FROM professores INNER JOIN cursos 
+ON professores.curso_id = cursos.id;
 
 ```
 ![Relatório 7](resultados_alunos/relatorio7.jpg)
@@ -289,7 +298,13 @@ SELECT alunos.nome, cursos.titulo, professores.nome AS "Nome professor" FROM alu
 ### 9) Faça uma consulta que mostre a quantidade de alunos que cada curso possui. Classifique os resultados em ordem descrecente de acordo com a quantidade de alunos.
 ```sql
 
--- 13ª Digitação (SQL para criar a consulta acima)
+SELECT cursos.titulo AS "Matéria",
+ COUNT(alunos.curso.id) AS "QTD Alunos"
+ FROM alunos
+ INNER JOIN cursos
+ ON alunos.cursos_id = cursos.id
+ GROUP BY Matéria
+ ORDER BY COUNT(alunos.curso_id) DESC;
 
 ```
 ![Relatório 9](resultados_alunos/relatorio9.jpg)
@@ -354,8 +369,8 @@ ROUND(primeira_nota + segunda_nota)/ 2 AS "Média das notas" FROM alunos WHERE (
 ![Desafio 2](resultados_alunos/desafio2.jpg)
 
 <!-- _________________________ -->
-### 3) Criar uma consulta que calcule a média das notas de cada aluno e mostre somente os alunos que tiveram a média **menor que 7**.
 ```sql
+### 3) Criar uma consulta que calcule a média das notas de cada aluno e mostre somente os alunos que tiveram a média **menor que 7**.
 
 -- 20ª Digitação (SQL para criar a consulta acima)
 
