@@ -316,13 +316,16 @@ SELECT cursos.titulo AS "Matéria",
 SELECT alunos.nome, primeira_nota, segunda_nota, ROUND(AVG((primeira_nota + segunda_nota) / 2), 2) AS "Média das notas", cursos.titulo AS titulo from alunos INNER JOIN cursos ON alunos.curso_id = cursos.id WHERE curso_id IN(1,2) GROUP BY nome ORDER BY titulo;
 
 ```
-![Relatório 10](resultados_alunos/relatorio10.jpg)
+![Relatório 10](resultados_alunos/relatorio10.png)
 
 <!-- _________________________ -->
 ### 11) Faça uma consulta que altere o nome do curso de Figma para Adobe XD e sua carga horária de 10 para 15.
 ```sql
 
--- 15ª Digitação (SQL para criar a consulta acima)
+UPDATE cursos
+SET titulo = 'AdobeXD' ,
+carga_horaria = 15
+WHERE id = 4;
 
 ```
 ![Relatório 11](resultados_alunos/relatorio11.jpg)
@@ -343,10 +346,13 @@ DELETE FROM alunos WHERE nome = 'Mário Calore' AND curso_id = 3;
 ### 13) Faça uma consulta que mostre a lista de alunos atualizada e o título dos cursos que fazem, classificados pelo nome do aluno.
 ```sql
 
--- 17ª Digitação (SQL para criar a consulta acima)
+SELECT alunos.nome,cursos.titulo
+FROM alunos
+INNER JOIN cursos ON alunos_cursos.id = cursos.id
+ORDER BY alunos.nome;
 
 ```
-![Relatório 13](resultados_alunos/relatorio13.jpg)
+![Relatório 13](resultados_alunos/relatorio%2013.png)
 <!-- _________________________ -->
 ## DESAFIOS
 
